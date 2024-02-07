@@ -1,3 +1,12 @@
+// loader logo
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        const loadingContainer = document.querySelector('.loader');
+        loadingContainer.style.animation = 'fadeOut 1s forwards';
+    }, 7000);
+});
+
+
 // navbar toggle
 const menuIcon = document.querySelector('.bx-menu');
 const navbar = document.querySelector('.navbar');
@@ -38,6 +47,7 @@ window.onscroll = () => {
     navbar.classList.remove('active');
 };
 
+
 // Scroll Reveal
 ScrollReveal({
     // reset: true,
@@ -68,9 +78,6 @@ const aboutBg = document.querySelector('.about');
 const portfolioBg = document.querySelector('.portfolio');
 const inputBg = document.querySelectorAll('.input-area');
 const btnDark = document.querySelectorAll('.btn');
-// const darkMode = document.querySelector('dark');
-
-console.log(inputBg);
 
 lightMode.onclick = () => {
     lightMode.classList.toggle('bxs-moon');
