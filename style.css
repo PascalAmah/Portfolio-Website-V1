@@ -68,11 +68,11 @@ body {
 
 section {
     min-height: 100vh;
-    padding: 10rem 9% 2rem;
+    padding: 8rem 9% 2rem;
 }
 
 
-#top-header {
+.top-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -89,8 +89,11 @@ section {
     border-bottom: .1rem solid rgba(0, 0, 0, .2);
 }
 
-#logo-icon {
+.logo-icon {
     width: 12rem;
+    height: 4.5rem;
+    background: url(images/logo.png) no-repeat;
+    background-size: contain;
 }
 
 .header-icons{
@@ -105,7 +108,7 @@ section {
     align-items: center;
     justify-content: center;
     font-size: 3.6rem;
-    color: var(--text-color-dark);
+    /* color: var(--text-color-dark); */
     display: none;
 }
 
@@ -114,10 +117,12 @@ section {
     align-items: center;
     justify-content: space-between;
     gap: 2.5rem;
+    background: var(--first-bg-color-dark);
 }
 
 
-.navbar-items a {
+.navbar-item {
+    display: inline-block;
     font-family: var(--font-one);
     font-size: 1.7rem;
     font-weight: 500;
@@ -126,8 +131,8 @@ section {
     transition: .3s;
 }
 
-.navbar-items a:hover,
-.navbar-items a.active {
+.navbar-item:hover,
+.navbar-item.active {
     color: var(--main-color);
 }
 
@@ -165,6 +170,13 @@ section {
     font-size: 1.6rem;
     line-height: 2.5rem;
 }
+
+#home-content h4 {
+    font-family: var(--font-one);
+    font-size: 2.5rem;
+    margin: 2rem 0;
+}
+
 
 #home-image img {
     width: 35vw;
@@ -221,6 +233,35 @@ section {
     
 }
 
+.elevation-modal {
+    position: absolute;
+    width: 20vw;
+    height: 15vh;
+    background: var(--first-bg-color-dark);
+    z-index: 1;
+    border-radius: 1rem;
+    display: none;
+    border: 1px solid var(--main-color);
+}
+
+.elevation-pitch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3.6rem;
+    font-family: var(--font-one);
+    font-size: 1.2rem;
+}
+
+.elevation-pitch i {
+    font-size: 3rem;
+}
+
+.elevation-pitch i:hover {
+    color: var(--main-color);
+}
+
 
 /* ABOUT SECTION */
 .about {
@@ -232,7 +273,7 @@ section {
     gap: 3rem;
     background: var(--second-bg-color-dark);
     transition: .5s ease;
-    padding-bottom: 10rem;
+    padding-bottom: 8rem;
     overflow-x: hidden;
 }
 
@@ -501,7 +542,7 @@ section {
 
 #portfolio-container .portfolio-layer h4{
     font-family: var(--font-one);
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 #portfolio-container .portfolio-layer p {
@@ -575,19 +616,19 @@ section {
 }
 
 /* FOOTER SECTION */
-#footer {
+.footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 2rem 9%;
     background: var(--second-bg-color-dark);
+    color: var(--text-color-dark);
 }
 
 #footer .footer-text p {
     font-family: var(--font-two);
     font-size: 1.6rem;
-    color: var(--text-color-dark);
 }
 
 #footer .footer-icon-top a {
@@ -642,7 +683,7 @@ section {
     border-radius: 24px;
     cursor: pointer;
     font-size: 2.5rem;
-    color: var(--text-color-dark)
+    /* color: var(--text-color-dark) */
 }
 
 /* .light {
@@ -703,7 +744,6 @@ section {
         left: 0;
         width: 100%;
         padding: 1rem 3%;
-        background: var(--first-bg-color-dark);
         border-top: .1rem solid rgba(0, 0, 0, .2);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
         display: none;

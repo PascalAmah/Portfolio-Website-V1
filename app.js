@@ -3,7 +3,21 @@ window.addEventListener('load', function() {
     setTimeout(function() {
         const loadingContainer = document.querySelector('.loader');
         loadingContainer.style.animation = 'fadeOut 1s forwards';
-    }, 7000);
+
+        
+        // scroll reveal
+        ScrollReveal({
+            // reset: true,
+            distance: '80px',
+            duration: 2000,
+            delay: 200
+        });
+        
+        ScrollReveal().reveal('#home-content, .heading', { origin: 'top' });
+        ScrollReveal().reveal('#home-image, .my-skills, .portfolio-box, #contact form', { origin: 'bottom' });
+        ScrollReveal().reveal('#home-content h1, #about-image', { origin: 'left' });
+        ScrollReveal().reveal('#home-content p, #about-content', { origin: 'right' });
+    }, 5000);
 });
 
 
@@ -48,20 +62,6 @@ window.onscroll = () => {
 };
 
 
-// Scroll Reveal
-ScrollReveal({
-    // reset: true,
-    distance: '80px',
-    duration: 2000,
-    delay: 200
-});
-
-ScrollReveal().reveal('#home-content, .heading', { origin: 'top' });
-ScrollReveal().reveal('#home-image, .my-skills, .portfolio-box, #contact form', { origin: 'bottom' });
-ScrollReveal().reveal('#home-content h1, #about-image', { origin: 'left' });
-ScrollReveal().reveal('#home-content p, #about-content', { origin: 'right' });
-
-
 // Typed Text
 const typed = new Typed('.multiple-text', {
     strings: ['Software Engineer', 'Graphic Designer', 'Saxophonist'],
@@ -71,6 +71,7 @@ const typed = new Typed('.multiple-text', {
     loop: true
 });
 
+
 // Light/Dark Mode
 const lightMode = document.querySelector('.bx-sun');
 const lightModeBg = document.querySelector('body');
@@ -78,17 +79,65 @@ const aboutBg = document.querySelector('.about');
 const portfolioBg = document.querySelector('.portfolio');
 const inputBg = document.querySelectorAll('.input-area');
 const btnDark = document.querySelectorAll('.btn');
+const topHeaderMode = document.querySelector('.top-header');
+const logoLight = document.querySelector('.logo-icon');
+const navbarLight = document.querySelector('.navbar');
+const navbarMode = document.querySelectorAll('.navbar-item');
+const footerMode = document.querySelector('.footer');
 
 lightMode.onclick = () => {
     lightMode.classList.toggle('bxs-moon');
     lightModeBg.classList.toggle('light-mode');
     aboutBg.classList.toggle('light-mode-2');
     portfolioBg.classList.toggle('light-mode-2');
+    topHeaderMode.classList.toggle('light-mode-2'); 
+    navbarLight.classList.toggle('light-mode-2');
+    footerMode.classList.toggle('light-mode-2');
+    modalPop.classList.toggle('light-mode-2');
+    
+    // form input mode
     inputBg.forEach(function(inputElement) {
         inputElement.classList.toggle('light-mode-2');
     }); 
     
+    // buttons mode
     btnDark.forEach(function(btnElement) {
         btnElement.classList.toggle('light-mode-2');
     });
+
+    // navbar mode
+    navbarMode.forEach(function(navbarItem) {
+        navbarItem.classList.toggle('light-mode-2');
+    });
+
+    // logo mode
+    if (lightMode.classList.toggle('bx-sun')) {
+        logoLight.style.background = "url('images/logo.png')";
+        logoLight.style.backgroundSize = 'contain';
+        
+    }
+    else {
+        logoLight.style.background = "url('images/logo-dark.png')";
+        logoLight.style.backgroundSize = 'contain';
+    }
 };
+
+
+// elevation pitch modal
+const modalBtn = document.querySelector('.elevator-btn');
+const modalPop = document.querySelector('.elevation-modal');
+const modalClose = document.querySelector('.modal-exit');
+
+modalBtn.onclick = () => {
+    modalPop.style.display = 'block';
+}
+
+modalClose.onclick = () => {
+    modalPop.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == modalPop) {
+      modalPop.style.display = 'none';
+    }
+}
