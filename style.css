@@ -236,7 +236,7 @@ section {
 .elevation-modal {
     position: absolute;
     width: 20vw;
-    height: 15vh;
+    /* height: 15vh; */
     background: var(--first-bg-color-dark);
     z-index: 1;
     border-radius: 1rem;
@@ -249,9 +249,9 @@ section {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin-top: 3.6rem;
+    margin: 2rem;
     font-family: var(--font-one);
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .elevation-pitch i {
@@ -711,6 +711,10 @@ section {
         padding: 10rem 3% 2rem;
     }
 
+    .elevation-modal {
+        width: 25vw;
+    }
+
     #about {
         min-height: auto;
         padding-bottom: 10rem;
@@ -775,6 +779,10 @@ section {
         width: 70vw;
         margin-top: 4rem;
     }
+
+    .elevation-modal {
+        width: 30vw;
+    }
 /* 
     #about {
         flex-direction: column-reverse;
@@ -798,11 +806,19 @@ section {
         grid-template-columns: 1fr;
         gap: 4rem;
     }
+
+    .elevation-modal {
+        width: 30vw;
+    }
 }
 
 @media (max-width: 450px) {
     html {
         font-size: 50%;
+    }
+
+    .elevation-modal {
+        width: 40vw;
     }
 
     #contact form .input-box input {
@@ -824,9 +840,10 @@ section {
         width: 90vw;
     }
 
-    /* #about-image img {
-        width: 90vw;
-    } */
+    .elevation-modal {
+        width: 50vw;
+        font-size: .8rem;
+    }
 
     #footer {
         flex-direction: column-reverse;
