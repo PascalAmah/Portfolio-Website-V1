@@ -508,6 +508,7 @@ section {
     display: flex;
 }
 
+
 #portfolio-container .portfolio-box img {
     width: 100%;
     transition: .5s ease;
@@ -559,7 +560,7 @@ section {
 }
 
 #portfolio-container .portfolio-layer a {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--text-color-dark);
 }
 
@@ -685,14 +686,6 @@ section {
     font-size: 2.5rem;
     /* color: var(--text-color-dark) */
 }
-
-/* .light {
-    font-size: 2.5rem;
-    color: var(--text-color-dark)
-} */
-/* .dark {
-    display: none;
-} */
 
 
 /* BREAKPOINTS */
