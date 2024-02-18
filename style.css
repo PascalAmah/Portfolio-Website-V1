@@ -116,6 +116,10 @@ section {
     display: none;
 }
 
+#menu-icon:hover {
+    color: var(--main-color);
+}
+
 .navbar{
     display: flex;
     align-items: center;
@@ -241,14 +245,11 @@ section {
     position: absolute;
     width: 60vw;
     height: 60vh;
-    background: var(--first-bg-color-dark);
     z-index: 1;
     border-radius: 1rem;
     display: none;
-    border: 1px solid var(--main-color);
     font-size: 1rem;
     padding: .5rem;
-    transition: 3s ease;
 }
 
 iframe {

@@ -93,7 +93,6 @@ lightMode.onclick = () => {
     topHeaderMode.classList.toggle('light-mode-2'); 
     navbarLight.classList.toggle('light-mode-2');
     footerMode.classList.toggle('light-mode-2');
-    modalPop.classList.toggle('light-mode-2');
     
     // form input mode
     inputBg.forEach(function(inputElement) {
@@ -128,16 +127,17 @@ const modalBtn = document.querySelector('.elevator-btn');
 const modalPop = document.querySelector('.elevation-modal');
 const modalClose = document.querySelector('.modal-exit');
 
+// elevator video stop
+const iframe = document.querySelector('#elevator-video');
+const url = iframe.src;
+
 modalBtn.onclick = () => {
+    iframe.src = url;
     modalPop.style.display = 'block';
+    modalPop.style.transition = '3s ease';
 }
 
 modalClose.onclick = () => {
     modalPop.style.display = 'none';
-}
-
-window.onclick = function(event) {
-    if (event.target == modalPop) {
-      modalPop.style.display = 'none';
-    }
+    iframe.src = '';
 }
