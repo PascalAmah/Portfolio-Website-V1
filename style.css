@@ -6,12 +6,15 @@
     --first-bg-color-light: #fff;
     --second-bg-color-light: #f0ebe8;
     --text-color-dark: #fff;
-    --text-color-light: #1f242d;
     --main-color: #ff6600;
     --hover: #96999e;
-
     --font-one: 'Raleway', sans-serif;
     --font-two: 'Inter', sans-serif;
+
+    --color-1: #1f242d;
+    --color-2: #323946;
+    --color-1-light: #f0ebe8;
+    --color-2-light: #fff;
 }
 
 * {
@@ -36,13 +39,14 @@ body {
     overflow: hidden;
 }
 
+/* LOADER ICON */
 .loader {
     background: var(--first-bg-color-dark);
     height: 100vh;
     width: 100%;
     position: fixed;
     z-index: 100;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -50,7 +54,7 @@ body {
 .loader img {
     width: 25vw;
     opacity: 0;
-    animation: fade-in-out 3s forwards infinite;
+    animation: fade-out 3s forwards;
 }
 
 @keyframes fadeOut {
@@ -235,30 +239,28 @@ section {
 
 .elevation-modal {
     position: absolute;
-    width: 20vw;
-    /* height: 15vh; */
+    width: 60vw;
+    height: 60vh;
     background: var(--first-bg-color-dark);
     z-index: 1;
     border-radius: 1rem;
     display: none;
     border: 1px solid var(--main-color);
-}
-
-.elevation-pitch {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin: 2rem;
-    font-family: var(--font-one);
     font-size: 1rem;
+    padding: .5rem;
+    transition: 3s ease;
 }
 
-.elevation-pitch i {
+iframe {
+    width: 100%;
+    height: 90%;
+}
+
+.elevation-modal i {
     font-size: 3rem;
 }
 
-.elevation-pitch i:hover {
+.elevation-modal i:hover {
     color: var(--main-color);
 }
 
@@ -684,7 +686,6 @@ section {
     border-radius: 24px;
     cursor: pointer;
     font-size: 2.5rem;
-    /* color: var(--text-color-dark) */
 }
 
 
@@ -705,7 +706,7 @@ section {
     }
 
     .elevation-modal {
-        width: 25vw;
+        width: 70vw;
     }
 
     #about {
@@ -774,16 +775,8 @@ section {
     }
 
     .elevation-modal {
-        width: 30vw;
+        width: 100vw;
     }
-/* 
-    #about {
-        flex-direction: column-reverse;
-    }
-
-    #about-image img {
-        width: 70vw;
-    } */
 
     #portfolio .heading {
         margin-bottom: 3rem;
@@ -795,13 +788,18 @@ section {
 }
 
 @media (max-width: 617px) {
+    section {
+        padding: 8rem 3% 2rem;
+    }
+
     #portfolio-container {
         grid-template-columns: 1fr;
         gap: 4rem;
     }
 
     .elevation-modal {
-        width: 30vw;
+        width: 100vw;
+        height: 50vh;
     }
 }
 
@@ -811,7 +809,8 @@ section {
     }
 
     .elevation-modal {
-        width: 40vw;
+        width: 100vw;
+        height: 40vh;
     }
 
     #contact form .input-box input {
@@ -834,7 +833,8 @@ section {
     }
 
     .elevation-modal {
-        width: 50vw;
+        width: 100vw;
+        height: 30vh;
         font-size: .8rem;
     }
 
