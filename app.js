@@ -2,7 +2,7 @@
 window.addEventListener('load', function() {
     setTimeout(function() {
         const loadingContainer = document.querySelector('.loader');
-        loadingContainer.style.animation = 'fadeOut 3s forwards';
+        loadingContainer.style.animation = 'fadeOut 1s forwards';
 
         
         // scroll reveal

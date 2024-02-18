@@ -46,7 +46,7 @@ body {
     width: 100%;
     position: fixed;
     z-index: 100;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -54,7 +54,7 @@ body {
 .loader img {
     width: 25vw;
     opacity: 0;
-    animation: fade-out 3s forwards;
+    animation: fade-in-out 3s forwards infinite;
 }
 
 @keyframes fadeOut {
