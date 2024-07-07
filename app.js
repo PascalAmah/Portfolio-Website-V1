@@ -25,10 +25,17 @@ window.addEventListener('load', function() {
 const menuIcon = document.querySelector('.bx-menu');
 const navbar = document.querySelector('.navbar');
 
-menuIcon.onclick = () => {
+menuIcon.addEventListener('click', () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
-};
+});
+
+window.addEventListener('click', (event) => {
+    if (navbar.classList.contains('active') && !navbar.contains(event.target) && !menuIcon.contains(event.target)) {
+        menuIcon.classList.remove('bx-x');
+        navbar.classList.remove('active');
+    }
+});
 
 
 
@@ -36,7 +43,7 @@ menuIcon.onclick = () => {
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('header div a');
 
-window.onscroll = () => {
+window.addEventListener('scroll', () => {
     sections.forEach(sec => {
         const top = window.scrollY;
         const offset = sec.offsetTop - 150;
@@ -59,7 +66,7 @@ window.onscroll = () => {
     // toggle icon and navbar
     menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
-};
+});
 
 
 // Typed Text
@@ -85,7 +92,7 @@ const navbarLight = document.querySelector('.navbar');
 const navbarMode = document.querySelectorAll('.navbar-item');
 const footerMode = document.querySelector('.footer');
 
-lightMode.onclick = () => {
+lightMode.addEventListener('click', () => {
     lightMode.classList.toggle('bxs-moon');
     lightModeBg.classList.toggle('light-mode');
     aboutBg.classList.toggle('light-mode-2');
@@ -112,14 +119,29 @@ lightMode.onclick = () => {
     // logo mode
     if (lightMode.classList.toggle('bx-sun')) {
         logoLight.style.background = "url('images/logo.png')";
-        logoLight.style.backgroundSize = 'contain';
-        
+        logoLight.style.backgroundSize = 'contain';  
     }
     else {
         logoLight.style.background = "url('images/logo-dark.png')";
         logoLight.style.backgroundSize = 'contain';
     }
-};
+});
+
+
+// ReadMore Button for about
+const toggleReadMore = document.getElementById("readMoreBtn");
+const moreText = document.getElementById("moreText");
+
+toggleReadMore.addEventListener('click', () => {
+    if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        toggleReadMore.innerHTML = "Read Less";
+    } else {
+        moreText.style.display = "none";
+        toggleReadMore.innerHTML = "Read More";
+    }
+});
+
 
 
 // // elevation pitch modal
@@ -141,18 +163,3 @@ lightMode.onclick = () => {
 //     modalPop.style.display = 'none';
 //     iframe.src = '';
 // }
-
-
-// ReadMore Button for about
-const toggleReadMore = document.getElementById("readMoreBtn");
-const moreText = document.getElementById("moreText");
-
-toggleReadMore.onclick = () => {
-    if (moreText.style.display === "none") {
-        moreText.style.display = "inline";
-        toggleReadMore.innerHTML = "Read Less";
-    } else {
-        moreText.style.display = "none";
-        toggleReadMore.innerHTML = "Read More";
-    }
-}

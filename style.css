@@ -186,7 +186,7 @@ section {
 
 #home-content p {
     font-family: var(--font-one);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     line-height: 2.5rem;
 }
 
@@ -223,7 +223,7 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 4rem;
     color: var(--main-color);
     margin: 3rem 1.5rem 3rem 0;
     transition: .5s ease;
@@ -245,11 +245,11 @@ section {
     font-weight: 600;
     letter-spacing: .1rem;
     transition: .5s ease;
+    cursor: pointer;
 }
 
 .btn:hover {
-    box-shadow: 0 0 1.2rem var(--main-color);
-    
+    box-shadow: 0 0 1.2rem var(--main-color);  
 }
 
 .elevation-modal {
@@ -568,12 +568,12 @@ iframe {
 
 #portfolio-container .portfolio-layer h4{
     font-family: var(--font-one);
-    font-size: 2rem;
+    font-size: 2.1rem;
 }
 
 #portfolio-container .portfolio-layer p {
     font-family: var(--font-two);
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     margin: .3rem 0 1rem;
 }
 
@@ -588,19 +588,6 @@ iframe {
     font-size: 3rem;
     color: var(--text-color-dark);
 }
-
-.portfolio-box .mobile-links {
-    width: fit-content;
-    margin: 1rem;
-    display: none;
-    gap: 1rem;
-}
-
-.portfolio-box .mobile-links a {
-    font-size: 3rem;
-    color: var(--main-color);
-}
-
 
 
 /* CONTACT SECTION */
@@ -783,6 +770,10 @@ iframe {
 }
 
 @media (max-width: 768px) {
+    section {
+        padding: 5rem 9% 3rem;
+    }
+
     #menu-icon {
         display: flex;
     }
@@ -795,11 +786,16 @@ iframe {
         padding: 1rem 3%;
         border-top: .1rem solid rgba(0, 0, 0, .2);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-        display: none;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
     }
 
     .navbar.active {
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     .navbar-items a {
@@ -810,6 +806,7 @@ iframe {
 
     #home {
         flex-direction: column-reverse;
+        min-height: 100vh;
     }
 
     #home-content h3 {
@@ -842,11 +839,19 @@ iframe {
     }
 
     .portfolio-box .portfolio-layer {
+        align-items: start;
+        text-align: start;
         padding: 2rem;
         position: static;
         z-index: 0;
         transform: none;
-        background: radial-gradient(rgba(0, 0, 0, .1), var(--main-color));
+        /* background: var(--hover); */
+        background: radial-gradient(var(--hover), var(--color-2));
+        /* background: radial-gradient(rgba(0, 0, 0, .1), var(--main-color)); */
+    }
+
+    #portfolio-container .portfolio-layer a {
+        color: var(--main-color);
     }
 
     .whatsapp-float {
