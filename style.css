@@ -37,6 +37,11 @@ body {
     color: var(--text-color-dark);
     transition: .5s ease;
     overflow: hidden;
+    max-width: 1440px;
+    /* display: flex;
+    flex-direction: column; */
+    margin: 0 auto;
+    /* align-items: center; */
 }
 
 /* LOADER ICON */
@@ -71,8 +76,8 @@ body {
 }
 
 section {
-    min-height: 100vh;
-    padding: 8rem 9% 2rem;
+    /* min-height: 100vh; */
+    padding: 8rem 9% 3rem;
 }
 
 
@@ -80,13 +85,18 @@ section {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
+    max-width: 1440px;
     padding: 1rem 9%;
+    margin: 0 auto;
     background: var(--first-bg-color-dark);
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 1;
+    box-sizing: border-box;
+    box-shadow: 0 .5rem 1rem rgba(255, 255, 255, 0.2);
 }
 
 .header.sticky {
@@ -150,6 +160,7 @@ section {
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    min-height: 100vh;
 }
 
 #home-content h3 {
@@ -338,10 +349,17 @@ iframe {
 
 #about-content p {
     font-family: var(--font-one);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin: 2rem 0 3rem;
     line-height: 2.5rem;
+    text-align: justify;
 }
+
+#moreText {
+    display: none;
+}
+
+
 
 /* SCROLL ANIMATION */
 #animation-scroll {
@@ -482,6 +500,7 @@ iframe {
 .portfolio {
     background: var(--second-bg-color-dark);
     transition: .5s ease;
+    padding-bottom: 6rem;
 }
 
 #portfolio .heading {
@@ -509,11 +528,14 @@ iframe {
     box-shadow: 0 0 1rem var(--first-bg-color-dark);
     overflow: hidden;
     display: flex;
+    flex-direction: column;
+    height: auto;
 }
 
 
 #portfolio-container .portfolio-box img {
     width: 100%;
+    height: 30rem;
     transition: .5s ease;
 }
 
@@ -567,6 +589,18 @@ iframe {
     color: var(--text-color-dark);
 }
 
+.portfolio-box .mobile-links {
+    width: fit-content;
+    margin: 1rem;
+    display: none;
+    gap: 1rem;
+}
+
+.portfolio-box .mobile-links a {
+    font-size: 3rem;
+    color: var(--main-color);
+}
+
 
 
 /* CONTACT SECTION */
@@ -615,9 +649,20 @@ iframe {
 }
 
 #contact form .submit-btn {
-    margin-top: 2rem;
+    margin-top: 3rem;
     cursor: pointer;
 }
+
+.input-area[type="number"]::-webkit-inner-spin-button,
+.input-area[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-area[type="number"] {
+    -moz-appearance: textfield;
+}
+
 
 /* FOOTER SECTION */
 .footer {
@@ -628,6 +673,7 @@ iframe {
     padding: 2rem 9%;
     background: var(--second-bg-color-dark);
     color: var(--text-color-dark);
+    width: 100%;
 }
 
 #footer .footer-text p {
@@ -652,6 +698,10 @@ iframe {
 #footer .footer-icon-top a i {
     font-size: 2.5rem;
     color: var(--second-bg-color-dark);
+}
+
+.whatsapp-float {
+    display: none;
 }
 
 
@@ -786,6 +836,51 @@ iframe {
     #portfolio-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    #portfolio-container .portfolio-box:hover img {
+        transform: none;
+    }
+
+    .portfolio-box .portfolio-layer {
+        padding: 2rem;
+        position: static;
+        z-index: 0;
+        transform: none;
+        background: radial-gradient(rgba(0, 0, 0, .1), var(--main-color));
+    }
+
+    .whatsapp-float {
+        display: block;
+        position: fixed;
+        bottom: 4rem;
+        right: 2rem;
+        animation: heart-pump 1.5s infinite;
+    }
+
+    .whatsapp-icon {
+        width: 12rem;
+        height: 12rem;
+    }
+
+    @keyframes heart-pump {
+        0%, 20%, 50%, 80%, 100% {
+            transform: scale(1);
+        }
+        40% {
+            transform: scale(1.1);
+        }
+        60% {
+            transform: scale(1.05);
+        }
+    }
+
+    #footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer-icon-top {
+        margin-bottom: 1rem;
+    }
 }
 
 @media (max-width: 617px) {
@@ -818,9 +913,6 @@ iframe {
         width: 100%;
     }
 
-    #footer {
-        flex-direction: column-reverse;
-    }
 
     #footer .footer-text p {
         text-align: center;
@@ -837,10 +929,6 @@ iframe {
         width: 100vw;
         height: 30vh;
         font-size: .8rem;
-    }
-
-    #footer {
-        flex-direction: column-reverse;
     }
 
     #footer .footer-text p {

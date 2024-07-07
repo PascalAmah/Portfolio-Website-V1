@@ -1,4 +1,4 @@
-// loader logo
+// // loader logo
 window.addEventListener('load', function() {
     setTimeout(function() {
         const loadingContainer = document.querySelector('.loader');
@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
         ScrollReveal().reveal('#home-image, .my-skills, .portfolio-box, #contact form', { origin: 'bottom' });
         ScrollReveal().reveal('#home-content h1, #about-image', { origin: 'left' });
         ScrollReveal().reveal('#home-content p, #about-content', { origin: 'right' });
-    }, 5000);
+    }, 3000);
 });
 
 
@@ -122,22 +122,37 @@ lightMode.onclick = () => {
 };
 
 
-// elevation pitch modal
-const modalBtn = document.querySelector('.elevator-btn');
-const modalPop = document.querySelector('.elevation-modal');
-const modalClose = document.querySelector('.modal-exit');
+// // elevation pitch modal
+// const modalBtn = document.querySelector('.elevator-btn');
+// const modalPop = document.querySelector('.elevation-modal');
+// const modalClose = document.querySelector('.modal-exit');
 
-// elevator video stop
-const iframe = document.querySelector('#elevator-video');
-const url = iframe.src;
+// // elevator video stop
+// const iframe = document.querySelector('#elevator-video');
+// const url = iframe.src;
 
-modalBtn.onclick = () => {
-    iframe.src = url;
-    modalPop.style.display = 'block';
-    modalPop.style.transition = '3s ease';
-}
+// modalBtn.onclick = () => {
+//     iframe.src = url;
+//     modalPop.style.display = 'block';
+//     modalPop.style.transition = '3s ease';
+// }
 
-modalClose.onclick = () => {
-    modalPop.style.display = 'none';
-    iframe.src = '';
+// modalClose.onclick = () => {
+//     modalPop.style.display = 'none';
+//     iframe.src = '';
+// }
+
+
+// ReadMore Button for about
+const toggleReadMore = document.getElementById("readMoreBtn");
+const moreText = document.getElementById("moreText");
+
+toggleReadMore.onclick = () => {
+    if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        toggleReadMore.innerHTML = "Read Less";
+    } else {
+        moreText.style.display = "none";
+        toggleReadMore.innerHTML = "Read More";
+    }
 }
