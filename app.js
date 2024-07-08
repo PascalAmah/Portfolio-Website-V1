@@ -1,3 +1,4 @@
+function app() {
 // // loader logo
 window.addEventListener('load', function() {
     setTimeout(function() {
@@ -163,3 +164,6 @@ toggleReadMore.addEventListener('click', () => {
 //     modalPop.style.display = 'none';
 //     iframe.src = '';
 // }
+}
+
+app();
