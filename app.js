@@ -1,4 +1,5 @@
-function app() {
+(function() {
+    "use strict" 
   // // loader logo
   window.addEventListener("load", function () {
     setTimeout(
@@ -171,6 +172,4 @@ function app() {
   //     modalPop.style.display = 'none';
   //     iframe.src = '';
   // }
-}
-
-app();
+})()
