@@ -2,26 +2,30 @@
   "use strict";
   
   document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
-      const loadingContainer = document.querySelector(".loader");
-      if (loadingContainer) {
-        loadingContainer.style.animation = "fadeOut 1s forwards";
-      }
+    // setTimeout(function() {
+    //   const loadingContainer = document.querySelector(".loader");
+    //   if (loadingContainer) {
+    //     loadingContainer.style.animation = "fadeOut 1s forwards";
+    //   }
 
-      if (typeof ScrollReveal !== 'undefined') {
-        ScrollReveal({
-          distance: "80px",
-          duration: 2000,
-          delay: 200,
-        });
+      
+    // }, 2000);
 
-        ScrollReveal().reveal("#home-content, .heading", { origin: "top" });
-        ScrollReveal().reveal("#home-image, .my-skills, .portfolio-box, #contact form", { origin: "bottom" });
-        ScrollReveal().reveal("#home-content h1, #about-image", { origin: "left" });
-        ScrollReveal().reveal("#home-content p, #about-content", { origin: "right" });
-      }
-    }, 2000);
+    if (typeof ScrollReveal !== 'undefined') {
+      ScrollReveal({
+        distance: "80px",
+        duration: 2000,
+        delay: 200,
+      });
+  
+      ScrollReveal().reveal("#home-content, .heading", { origin: "top" });
+      ScrollReveal().reveal("#home-image, .my-skills, .portfolio-box, #contact form", { origin: "bottom" });
+      ScrollReveal().reveal("#home-content h1, #about-image", { origin: "left" });
+      ScrollReveal().reveal("#home-content p, #about-content", { origin: "right" });
+    }
   });
+
+  
 
   // Navbar toggle
   const menuIcon = document.querySelector(".bx-menu");
