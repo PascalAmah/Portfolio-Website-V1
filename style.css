@@ -857,14 +857,14 @@ iframe {
     .whatsapp-float {
         display: block;
         position: fixed;
-        bottom: 4rem;
+        bottom: 2rem;
         right: 2rem;
         animation: heart-pump 1.5s infinite;
     }
 
     .whatsapp-icon {
-        width: 12rem;
-        height: 12rem;
+        width: 8rem;
+        height: 8rem;
     }
 
     @keyframes heart-pump {

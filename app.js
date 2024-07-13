@@ -1,58 +1,48 @@
 (function() {
-    "use strict" 
-  // // loader logo
-  window.addEventListener("load", function () {
-    setTimeout(
-      function () {
-        const loadingContainer = document.querySelector(".loader");
+  "use strict";
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+      const loadingContainer = document.querySelector(".loader");
+      if (loadingContainer) {
         loadingContainer.style.animation = "fadeOut 1s forwards";
+      }
 
-        // scroll reveal
+      if (typeof ScrollReveal !== 'undefined') {
         ScrollReveal({
-          // reset: true,
           distance: "80px",
           duration: 2000,
           delay: 200,
         });
 
         ScrollReveal().reveal("#home-content, .heading", { origin: "top" });
-        ScrollReveal().reveal(
-          "#home-image, .my-skills, .portfolio-box, #contact form",
-          { origin: "bottom" }
-        );
-        ScrollReveal().reveal("#home-content h1, #about-image", {
-          origin: "left",
-        });
-        ScrollReveal().reveal("#home-content p, #about-content", {
-          origin: "right",
-        });
-      },
-
-      2000
-    );
+        ScrollReveal().reveal("#home-image, .my-skills, .portfolio-box, #contact form", { origin: "bottom" });
+        ScrollReveal().reveal("#home-content h1, #about-image", { origin: "left" });
+        ScrollReveal().reveal("#home-content p, #about-content", { origin: "right" });
+      }
+    }, 2000);
   });
 
-  // navbar toggle
+  // Navbar toggle
   const menuIcon = document.querySelector(".bx-menu");
   const navbar = document.querySelector(".navbar");
+  if (menuIcon && navbar) {
+    menuIcon.addEventListener("click", () => {
+      menuIcon.classList.toggle("bx-x");
+      navbar.classList.toggle("active");
+    });
 
-  menuIcon.addEventListener("click", () => {
-    menuIcon.classList.toggle("bx-x");
-    navbar.classList.toggle("active");
-  });
+    window.addEventListener("click", (event) => {
+      if (navbar.classList.contains("active") &&
+          !navbar.contains(event.target) &&
+          !menuIcon.contains(event.target)) {
+        menuIcon.classList.remove("bx-x");
+        navbar.classList.remove("active");
+      }
+    });
+  }
 
-  window.addEventListener("click", (event) => {
-    if (
-      navbar.classList.contains("active") &&
-      !navbar.contains(event.target) &&
-      !menuIcon.contains(event.target)
-    ) {
-      menuIcon.classList.remove("bx-x");
-      navbar.classList.remove("active");
-    }
-  });
-
-  // scroll section active link
+  // Scroll section active link
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll("header div a");
 
@@ -66,94 +56,91 @@
       if (top >= offset && top < offset + height) {
         navLinks.forEach((links) => {
           links.classList.remove("active");
-          document
-            .querySelector("header div a[href*=" + id + "]")
-            .classList.add("active");
+          const activeLink = document.querySelector("header div a[href*=" + id + "]");
+          if (activeLink) {
+            activeLink.classList.add("active");
+          }
         });
       }
     });
 
-    // sticky navbar
+    // Sticky navbar
     const header = document.querySelector("header");
+    if (header) {
+      header.classList.toggle("sticky", window.scrollY > 100);
+    }
 
-    header.classList.toggle("sticky", window.scrollY > 100);
-
-    // toggle icon and navbar
-    menuIcon.classList.remove("bx-x");
-    navbar.classList.remove("active");
+    // Toggle icon and navbar
+    if (menuIcon) {
+      menuIcon.classList.remove("bx-x");
+    }
+    if (navbar) {
+      navbar.classList.remove("active");
+    }
   });
 
   // Typed Text
-  const typed = new Typed(".multiple-text", {
-    strings: ["Software Engineer", "Graphic Designer", "Saxophonist"],
-    typeSpeed: 100,
-    backSpeed: 100,
-    backDelay: 1000,
-    loop: true,
-  });
+  if (typeof Typed !== 'undefined') {
+    const typed = new Typed(".multiple-text", {
+      strings: ["Software Engineer", "Graphic Designer", "Saxophonist"],
+      typeSpeed: 100,
+      backSpeed: 100,
+      backDelay: 1000,
+      loop: true,
+    });
+  }
 
   // Light/Dark Mode
   const lightMode = document.querySelector(".bx-sun");
-  const lightModeBg = document.querySelector("body");
-  const aboutBg = document.querySelector(".about");
-  const portfolioBg = document.querySelector(".portfolio");
-  const inputBg = document.querySelectorAll(".input-area");
-  const btnDark = document.querySelectorAll(".btn");
-  const topHeaderMode = document.querySelector(".top-header");
-  const logoLight = document.querySelector(".logo-icon");
-  const navbarLight = document.querySelector(".navbar");
-  const navbarMode = document.querySelectorAll(".navbar-item");
-  const footerMode = document.querySelector(".footer");
+  const elementsToToggle = [
+    document.querySelector("body"),
+    document.querySelector(".about"),
+    document.querySelector(".portfolio"),
+    ...document.querySelectorAll(".input-area"),
+    ...document.querySelectorAll(".btn"),
+    document.querySelector(".top-header"),
+    document.querySelector(".logo-icon"),
+    document.querySelector(".navbar"),
+    ...document.querySelectorAll(".navbar-item"),
+    document.querySelector(".footer")
+  ];
 
-  lightMode.addEventListener("click", () => {
-    lightMode.classList.toggle("bxs-moon");
-    lightModeBg.classList.toggle("light-mode");
-    aboutBg.classList.toggle("light-mode-2");
-    portfolioBg.classList.toggle("light-mode-2");
-    topHeaderMode.classList.toggle("light-mode-2");
-    navbarLight.classList.toggle("light-mode-2");
-    footerMode.classList.toggle("light-mode-2");
+  if (lightMode) {
+    lightMode.addEventListener("click", () => {
+      elementsToToggle.forEach(el => el && el.classList.toggle("light-mode-2"));
+      lightMode.classList.toggle("bxs-moon");
 
-    // form input mode
-    inputBg.forEach(function (inputElement) {
-      inputElement.classList.toggle("light-mode-2");
+      // logo mode
+      const logoLight = document.querySelector(".logo-icon");
+      if (logoLight) {
+        if (lightMode.classList.contains("bxs-moon")) {
+          logoLight.style.background = "url('images/logo-dark.png')";
+        } else {
+          logoLight.style.background = "url('images/logo.png')";
+        }
+        logoLight.style.backgroundSize = "contain";
+      }
     });
-
-    // buttons mode
-    btnDark.forEach(function (btnElement) {
-      btnElement.classList.toggle("light-mode-2");
-    });
-
-    // navbar mode
-    navbarMode.forEach(function (navbarItem) {
-      navbarItem.classList.toggle("light-mode-2");
-    });
-
-    // logo mode
-    if (lightMode.classList.toggle("bx-sun")) {
-      logoLight.style.background = "url('images/logo.png')";
-      logoLight.style.backgroundSize = "contain";
-    } else {
-      logoLight.style.background = "url('images/logo-dark.png')";
-      logoLight.style.backgroundSize = "contain";
-    }
-  });
+  }
 
   // ReadMore Button for about
   const toggleReadMore = document.getElementById("readMoreBtn");
   const moreText = document.getElementById("moreText");
 
-  toggleReadMore.addEventListener("click", () => {
-    if (moreText.style.display === "none") {
-      moreText.style.display = "inline";
-      toggleReadMore.innerHTML = "Read Less";
-    } else {
-      moreText.style.display = "none";
-      toggleReadMore.innerHTML = "Read More";
-    }
-  });
+  if (toggleReadMore && moreText) {
+    toggleReadMore.addEventListener("click", () => {
+      if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        toggleReadMore.innerHTML = "Read Less";
+      } else {
+        moreText.style.display = "none";
+        toggleReadMore.innerHTML = "Read More";
+      }
+    });
+  }
+})();
 
-  // // elevation pitch modal
+// // elevation pitch modal
   // const modalBtn = document.querySelector('.elevator-btn');
   // const modalPop = document.querySelector('.elevation-modal');
   // const modalClose = document.querySelector('.modal-exit');
@@ -172,4 +159,3 @@
   //     modalPop.style.display = 'none';
   //     iframe.src = '';
   // }
-})()
