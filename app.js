@@ -1,17 +1,17 @@
-(function() {
+(function () {
   "use strict";
 
-  document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
       const loadingContainer = document.querySelector(".loader");
       if (loadingContainer) {
         loadingContainer.style.animation = "fadeOut 1s forwards";
-        loadingContainer.addEventListener('animationend', function() {
-          loadingContainer.style.display = 'none';
+        loadingContainer.addEventListener("animationend", function () {
+          loadingContainer.style.display = "none";
         });
       }
 
-      if (typeof ScrollReveal !== 'undefined') {
+      if (typeof ScrollReveal !== "undefined") {
         ScrollReveal({
           distance: "80px",
           duration: 2000,
@@ -19,14 +19,19 @@
         });
 
         ScrollReveal().reveal("#home-content, .heading", { origin: "top" });
-        ScrollReveal().reveal("#home-image, .my-skills, .portfolio-box, #contact form", { origin: "bottom" });
-        ScrollReveal().reveal("#home-content h1, #about-image", { origin: "left" });
-        ScrollReveal().reveal("#home-content p, #about-content", { origin: "right" });
+        ScrollReveal().reveal(
+          "#home-image, .my-skills, .portfolio-box, #contact form",
+          { origin: "bottom" }
+        );
+        ScrollReveal().reveal("#home-content h1, #about-image", {
+          origin: "left",
+        });
+        ScrollReveal().reveal("#home-content p, #about-content", {
+          origin: "right",
+        });
       }
     }, 2000);
   });
-
-  
 
   // Navbar toggle
   const menuIcon = document.querySelector(".bx-menu");
@@ -38,9 +43,11 @@
     });
 
     window.addEventListener("click", (event) => {
-      if (navbar.classList.contains("active") &&
-          !navbar.contains(event.target) &&
-          !menuIcon.contains(event.target)) {
+      if (
+        navbar.classList.contains("active") &&
+        !navbar.contains(event.target) &&
+        !menuIcon.contains(event.target)
+      ) {
         menuIcon.classList.remove("bx-x");
         navbar.classList.remove("active");
       }
@@ -61,7 +68,9 @@
       if (top >= offset && top < offset + height) {
         navLinks.forEach((links) => {
           links.classList.remove("active");
-          const activeLink = document.querySelector("header div a[href*=" + id + "]");
+          const activeLink = document.querySelector(
+            "header div a[href*=" + id + "]"
+          );
           if (activeLink) {
             activeLink.classList.add("active");
           }
@@ -85,7 +94,7 @@
   });
 
   // Typed Text
-  if (typeof Typed !== 'undefined') {
+  if (typeof Typed !== "undefined") {
     const typed = new Typed(".multiple-text", {
       strings: ["Software Engineer", "Graphic Designer", "Saxophonist"],
       typeSpeed: 100,
@@ -107,12 +116,14 @@
     document.querySelector(".logo-icon"),
     document.querySelector(".navbar"),
     ...document.querySelectorAll(".navbar-item"),
-    document.querySelector(".footer")
+    document.querySelector(".footer"),
   ];
 
   if (lightMode) {
     lightMode.addEventListener("click", () => {
-      elementsToToggle.forEach(el => el && el.classList.toggle("light-mode-2"));
+      elementsToToggle.forEach(
+        (el) => el && el.classList.toggle("light-mode-2")
+      );
       lightMode.classList.toggle("bxs-moon");
 
       // logo mode
@@ -146,21 +157,21 @@
 })();
 
 // // elevation pitch modal
-  // const modalBtn = document.querySelector('.elevator-btn');
-  // const modalPop = document.querySelector('.elevation-modal');
-  // const modalClose = document.querySelector('.modal-exit');
+// const modalBtn = document.querySelector('.elevator-btn');
+// const modalPop = document.querySelector('.elevation-modal');
+// const modalClose = document.querySelector('.modal-exit');
 
-  // // elevator video stop
-  // const iframe = document.querySelector('#elevator-video');
-  // const url = iframe.src;
+// // elevator video stop
+// const iframe = document.querySelector('#elevator-video');
+// const url = iframe.src;
 
-  // modalBtn.onclick = () => {
-  //     iframe.src = url;
-  //     modalPop.style.display = 'block';
-  //     modalPop.style.transition = '3s ease';
-  // }
+// modalBtn.onclick = () => {
+//     iframe.src = url;
+//     modalPop.style.display = 'block';
+//     modalPop.style.transition = '3s ease';
+// }
 
-  // modalClose.onclick = () => {
-  //     modalPop.style.display = 'none';
-  //     iframe.src = '';
-  // }
+// modalClose.onclick = () => {
+//     modalPop.style.display = 'none';
+//     iframe.src = '';
+// }
