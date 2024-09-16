@@ -154,6 +154,33 @@
       }
     });
   }
+
+  // Contact form submission
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Send the form data using fetch
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Form submitted successfully!");
+          form.reset(); // Reset form after successful submission
+        } else {
+          alert("Submission failed. Please try again.");
+        }
+      })
+      .catch((error) => {
+        alert("An error occurred. Please try again later.");
+      });
+  });
 })();
 
 // // elevation pitch modal
